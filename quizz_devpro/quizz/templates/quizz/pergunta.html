@@ -18,26 +18,14 @@
 
                 <div id="game" class="justify-center flex-column animate-bottom hidden">
 
-                    <h2>Questão 1</h2>
-                    <h3>Qual destas palavras é uma palavra reservada em Python?</h3>
-
+                    <h2>Questão {{ indice }}</h2>
+                    <h3>{{ pergunta.enunciado }}</h3>
+                    {% for alternativa in pergunta.alternativas.array %}
                     <div class="choice-container">
-                        <p class="choice-prefix">A</p>
-                        <p class="choice-text">copy</p>
+                        <p class="choice-prefix">{% cycle 'A' 'B' 'C' 'D' %}</p>
+                        <p class="choice-text">{{alternativa}}</p>
                     </div>
-                    <div class="choice-container">
-                        <p class="choice-prefix">B</p>
-                        <p class="choice-text incorrect">names</p>
-                    </div>
-                    <div class="choice-container">
-                        <p class="choice-prefix">C</p>
-                        <p class="choice-text correct">if</p>
-                    </div>
-                    <div class="choice-container">
-                        <p class="choice-prefix">D</p>
-                        <p class="choice-text">value</p>
-                    </div>  
-
+                    {% endfor %}
                 </div>
             
             </div>
