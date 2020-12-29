@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="ie-edge"/>
-        <title>Quiz - DevPro</title>
-        <link rel="stylesheet" href="/static/assets/styles/app.css"/>
-    </head>
-    <body>
-        <div class="login-page">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie-edge"/>
+    <title>Quiz - DevPro</title>
+    <link rel="stylesheet" href="/static/assets/styles/app.css"/>
+</head>
+<body>
+<div class="login-page">
 
-            <p class="subtitle-quiz">Quiz</p>
-            <p class="subtitle-page">Dev Pro</p>
-            <div class="form">
-                <form class="login-form" action="game.html">
-                  <input type="text" placeholder="NOME"/>
-                  <input type="password" placeholder="EMAIL"/>
-                  <button>Entrar</button>
-                </form>
-            </div>
-        </div>
-    </body>
+    <p class="subtitle-quiz">Quiz</p>
+    <p class="subtitle-page">Dev Pro</p>
+
+    <div class="form">
+        {% if form.errors %}
+        <p> Erros:
+            {{ form.errors}}
+        </p>
+        {% endif %}
+        <form class="login-form" method="post" action="/">
+            {% csrf_token %}
+            <input type="text" name="nome" placeholder="NOME" required="required" value="{{form.nome.value}}"/>
+            <input type="email" name="email" placeholder="EMAIL" required="required" value="{{form.email.value}}"/>
+            <button>Entrar</button>
+        </form>
+    </div>
+</div>
+</body>
 </html>

@@ -16,3 +16,14 @@ class Pergunta(models.Model):
 
     def __str__(self):
         return self.enunciado
+
+
+class Aluno(models.Model):
+    nome = models.CharField(max_length=64)
+    email = models.EmailField(unique=True)
+    criacao = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
+
