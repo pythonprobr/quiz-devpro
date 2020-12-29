@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from quizz_devpro.quizz.models import Pergunta, Aluno
+from quizz_devpro.quizz.models import Pergunta, Aluno, Resposta
 
 
 @admin.register(Pergunta)
@@ -12,3 +12,8 @@ class PerguntaAdmin(admin.ModelAdmin):
 @admin.register(Aluno)
 class AlunoAdmin(admin.ModelAdmin):
     list_display = ('email', 'nome', 'criacao')
+
+
+@admin.register(Resposta)
+class RespostaAdmin(admin.ModelAdmin):
+    list_display = ('criacao', 'pergunta', 'aluno', 'pontos')
