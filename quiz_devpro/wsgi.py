@@ -1,5 +1,5 @@
 """
-WSGI config for quizz_devpro project.
+WSGI config for quiz_devpro project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'quizz_devpro.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'quiz_devpro.settings')
 
 application = get_wsgi_application()

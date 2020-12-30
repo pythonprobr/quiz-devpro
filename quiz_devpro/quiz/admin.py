@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from quizz_devpro.quizz.models import Pergunta, Aluno, Resposta
+from quiz_devpro.quiz.models import Pergunta, Aluno, Resposta
 
 
 @admin.register(Pergunta)

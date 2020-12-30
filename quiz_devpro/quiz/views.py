@@ -8,8 +8,8 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.utils.timezone import now
 
-from quizz_devpro.quizz.forms import AlunoForm
-from quizz_devpro.quizz.models import Pergunta, Aluno, Resposta
+from quiz_devpro.quiz.forms import AlunoForm
+from quiz_devpro.quiz.models import Pergunta, Aluno, Resposta
 
 
 def index(request):
@@ -27,9 +27,9 @@ def index(request):
             return redirect('/perguntas/1')
         else:
             contexto = {'form': form}
-            return render(request, 'quizz/index.html', contexto)
+            return render(request, 'quiz/index.html', contexto)
 
-    return render(request, 'quizz/index.html')
+    return render(request, 'quiz/index.html')
 
 
 def perguntas(request, indice: int):
@@ -62,7 +62,7 @@ def perguntas(request, indice: int):
             contexto = {'indice': indice, 'pergunta': pergunta, 'resposta_indice': resposta_indice}
     else:
         contexto = {'indice': indice, 'pergunta': pergunta}
-    return render(request, 'quizz/pergunta.html', contexto)
+    return render(request, 'quiz/pergunta.html', contexto)
 
 
 def classificacao(request):
@@ -81,4 +81,4 @@ def classificacao(request):
         'posicao': alunos_com_mais_pontos + 1,
         'primeiros_alunos_do_ranking': primeiros_alunos_do_ranking
     }
-    return render(request, 'quizz/classificacao.html', contexto)
+    return render(request, 'quiz/classificacao.html', contexto)

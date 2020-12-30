@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from quizz_devpro.quizz.models import Aluno
+from quiz_devpro.quiz.models import Aluno
 
 
 class AlunoForm(ModelForm):
