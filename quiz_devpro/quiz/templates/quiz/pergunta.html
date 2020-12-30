@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie-edge"/>
     <title>Quiz - DevPro</title>
-    <link rel="stylesheet" href="/static/assets/styles/app.css"/>
+    <link rel="stylesheet" href="{% static 'assets/styles/app.css' %}"/>
 </head>
 <body>
 <div class="game-page">
@@ -35,5 +36,5 @@
     </div>
 </div>
 </body>
-<script src="/static/assets/js/script.js"></script>
+<script src="{% static '/assets/js/script.js' %}"></script>
 </html>
