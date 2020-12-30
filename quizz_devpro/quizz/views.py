@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.db import IntegrityError
+from django.db.models import Sum
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -67,4 +68,16 @@ def perguntas(request, indice: int):
 def classificacao(request):
     if 'aluno_id' not in request.session:
         return redirect('/')
-    return render(request, 'quizz/classificacao.html')
+    aluno_id = request.session['aluno_id']
+    pontos_dct = Resposta.objects.filter(aluno_id=aluno_id).aggregate(Sum('pontos'))
+    pontos_do_aluno = pontos_dct['pontos__sum']
+    alunos_com_mais_pontos = Resposta.objects.values('aluno').annotate(Sum('pontos')).filter(pontos__sum__gt=pontos_do_aluno).count()
+    primeiros_alunos_do_ranking= list(
+        Resposta.objects.values('aluno', 'aluno__nome').annotate(Sum('pontos')).order_by('-pontos__sum')[:5]
+    )
+    contexto = {
+        'pontos': pontos_do_aluno,
+        'posicao': alunos_com_mais_pontos + 1,
+        'primeiros_alunos_do_ranking': primeiros_alunos_do_ranking
+    }
+    return render(request, 'quizz/classificacao.html', contexto)
