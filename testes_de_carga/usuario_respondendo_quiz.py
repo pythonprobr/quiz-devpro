@@ -14,8 +14,6 @@ class MeuUsuario(HttpUser):
         arvore = pq(resposta_com_form.text)
         csrf_token_cookie = resposta_com_form.cookies['csrftoken']
         csrf_token = arvore("input[name='csrfmiddlewaretoken']").val()
-        print(csrf_token_cookie)
-        print(csrf_token)
         data["csrfmiddlewaretoken"] = csrf_token
         return self.client.post(
             path,
